@@ -1,7 +1,7 @@
 import numpy as np
 import sys
 import os
-import urllib
+import urllib.request
 
 
 class Downloader:
@@ -34,10 +34,10 @@ class Downloader:
                     if not os.path.exists(DIR):
                         os.makedirs(DIR)
                     try:
-                        urllib.request.urlretrieve(url_handle+str(season)[-2:]+str(season+1)[-2:]+'/'+league_handle+str(adjust_handle(j,league_handle,adjust_name))+'.csv',os.path.join(DIR,'{}-{}.csv'.format(season,season+1)))
-                        print('Download Successfull for {} in season {}'.format(league_handle,season))
+                        urllib.request.urlretrieve(self.url_handle+str(season)[-2:]+str(season+1)[-2:]+'/'+league_handle+str(self.adjust_handle(j,league_handle,adjust_name))+'.csv',os.path.join(DIR,'{}-{}.csv'.format(season,season+1)))
+                        print('Download Successfull for {} in season {}'.format(league_handle+str(self.adjust_handle(j,league_handle,adjust_name)),season))
                     except:
-                        print('No Data for {} in season {}'.format(league_handle,season))
+                        print('No Data for {} in season {}'.format(league_handle+str(self.adjust_handle(j,league_handle,adjust_name)),season))
                     
 
 def main():
