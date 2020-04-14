@@ -11,8 +11,7 @@ class Club_encoder(torch.nn.Module):
         super(Club_encoder,self).__init__()
         self.input_size=500
         self.hidden_size=500
-        self.num_layers=10
-        self.lstm = nn.LSTM(input_size=self.input_size,num_layers=self.num_layers, hidden_size=self.hidden_size) 
+        self.lstm = nn.LSTM(input_size=self.input_size, hidden_size=self.hidden_size) 
         self.hidden_state = (torch.rand((self.num_layers, 1, self.hidden_size),requires_grad=False),torch.rand((self.num_layers, 1, self.hidden_size),requires_grad=False))
         self.feature_vector = torch.rand(1,1,500)
     
