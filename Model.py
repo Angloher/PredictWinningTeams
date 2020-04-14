@@ -13,7 +13,7 @@ class Model(torch.nn.Module):
     def forward(self,ClubEncoders):
         HomeTeam=ClubEncoders[0]
         AwayTeam=ClubEncoders[1]
-        HomeInformation=HomeTeam.forward(AwayTeam.feature_vector)
-        AwayInformation=AwayTeam.forward(HomeTeam.feature_vector)
+        HomeInformation=HomeTeam(AwayTeam.feature_vector)
+        AwayInformation=AwayTeam(HomeTeam.feature_vector)
         inp=torch.cat((HomeInformation,AwayInformation),2)
-        return self.matchEncoder.forward(inp)
+        return self.matchEncoder(inp)

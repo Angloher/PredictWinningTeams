@@ -88,7 +88,7 @@ class Feature_extractor:
                     for column in all_columns:
                         if column in division_data[i].columns:
                             extract_columns.append(column)
-                    division_stats.append(division_data[i][extract_columns])
+                    division_stats.append(division_data[i][extract_columns].dropna())
                 playing_data.append(division_stats)
             self.playing_stats.append(playing_data)
 
